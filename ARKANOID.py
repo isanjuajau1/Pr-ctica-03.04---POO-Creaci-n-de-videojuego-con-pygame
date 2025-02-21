@@ -6,6 +6,7 @@ ventana = pygame.display.set_mode((640, 480))
 pygame.display.set_caption("Arkanoid")
 
 # Cargar imágenes
+fondo = pygame.image.load("nubes .jpg")
 bate = pygame.image.load("huesito.png")
 baterect = bate.get_rect()
 baterect.move_ip(240, 450)
@@ -20,7 +21,7 @@ class Pelota(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.image.load("25x25.png")
         self.rect = self.image.get_rect()
-        self.rect.center = (320, 240)
+        self.rect.center = (250, 210)
         self.speed = [4, 4]
 
     def update(self):
@@ -92,7 +93,7 @@ while jugando:
     if pelota.rect.bottom > ventana.get_height():
         jugando = False
 
-    ventana.fill((252, 243, 207))
+    ventana.blit(fondo, (0, 0))  # Dibujar el fondo
     ventana.blit(bate, baterect)
     todos_sprites.draw(ventana)
     pygame.display.flip()
